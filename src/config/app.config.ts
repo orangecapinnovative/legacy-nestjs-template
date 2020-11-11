@@ -6,7 +6,7 @@ export default () => {
     cronPort: parseInt(process.env.CRON_PORT ?? '3001', 10),
     mongodb: {
       host: process.env.DATABASE_HOST ?? 'mongodb://localhost/',
-      databaseName: process.env.DATABASE_NAME ?? 'pdpa-staging',
+      databaseName: process.env.DATABASE_NAME ?? 'nestjs-template',
     },
     rateLimit: {
       windowTimeMs: 15 * 60 * 1000, // 15 minutes

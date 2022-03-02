@@ -5,6 +5,7 @@ import * as helmet from 'helmet';
 import * as cors from 'cors';
 import * as rateLimit from 'express-rate-limit';
 import * as moment from 'moment-timezone';
+import { VersioningType } from '@nestjs/common';
 
 import { AppModule } from './app/app.module';
 
@@ -33,6 +34,11 @@ async function bootstrap() {
   );
 
   app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
+
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
+
   await app.listen(
     configService.get<number>('port'),
     configService.get<string>('hostname'),
